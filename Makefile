@@ -446,20 +446,20 @@ ${tools-bins}: ${tools-objs} ${swupdate-libs} FORCE
 	$(call cmd,strip)
 
 install: all
-	install -d ${DESTDIR}/usr/bin
-	install -d ${DESTDIR}/usr/include
-	install -d ${DESTDIR}/usr/lib
-	install -m 755 swupdate ${DESTDIR}/usr/bin
+	install -d ${DESTDIR}/bin
+	install -d ${DESTDIR}/include
+	install -d ${DESTDIR}/lib
+	install -m 755 swupdate ${DESTDIR}/bin
 	for i in ${tools-bins};do \
-		install -m 755 $$i ${DESTDIR}/usr/bin; \
+		install -m 755 $$i ${DESTDIR}/bin; \
 	done
-	install -m 0644 include/network_ipc.h ${DESTDIR}/usr/include
-	install -m 0644 include/swupdate_status.h ${DESTDIR}/usr/include
-	install -m 0644 include/progress_ipc.h ${DESTDIR}/usr/include
-	install -m 0755 ipc/lib.a ${DESTDIR}/usr/lib/libswupdate.a
+	install -m 0644 include/network_ipc.h ${DESTDIR}/include
+	install -m 0644 include/swupdate_status.h ${DESTDIR}/include
+	install -m 0644 include/progress_ipc.h ${DESTDIR}/include
+	install -m 0755 ipc/lib.a ${DESTDIR}/lib/libswupdate.a
 	if [ $(HAVE_LUA) = y ]; then \
-		install -d ${DESTDIR}/usr/lib/lua/$(LUAVER); \
-		install -m 0755 ${lua_swupdate} $(DESTDIR)/usr/lib/lua/$(LUAVER); \
+		install -d ${DESTDIR}/lib/lua/$(LUAVER); \
+		install -m 0755 ${lua_swupdate} $(DESTDIR)/lib/lua/$(LUAVER); \
 	fi
 
 PHONY += run-tests
